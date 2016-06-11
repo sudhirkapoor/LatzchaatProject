@@ -19,4 +19,11 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
+	
+	/* Mapping request for Register.jsp page */
+	@RequestMapping("/Register")
+	public ModelAndView registerPage() {
+		ModelAndView mv = new ModelAndView("Register");
+		return mv;
+	}
 }

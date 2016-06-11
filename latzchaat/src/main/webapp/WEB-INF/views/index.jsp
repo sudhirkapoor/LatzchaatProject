@@ -16,7 +16,7 @@
 				<div class="row">
 					<div class="group1 col-sm-6 col-md-6">
 						<span class="glyphicon glyphicon-log-in"></span> <a href="Login">LOGIN</a>
-						<span class="glyphicon glyphicon-user"></span> <a href="Register">NEW
+						<span class="glyphicon glyphicon-user"></span> <a href="${session.getContextPath()}/latzchaat/Register">NEW
 							USER</a>,
 
 					</div>
