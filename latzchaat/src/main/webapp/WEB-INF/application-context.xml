@@ -17,10 +17,11 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:tcp://localhost/~/latzchaat" />
+		<property name="url" value="jdbc:h2:~/latzchaat" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
+
 
 	<!-- Session Factory Declaration -->
 	<bean id="sessionFactory"
@@ -28,7 +29,9 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.latzchaat.model.UserDetails</value> 				
+				<value>com.latzchaat.model.UserDetails</value>
+				<value>com.latzchaat.model.Blogs</value>
+				<!-- <value>com.latzchaat.model.Administrator</value> -->
 			</list>
 		</property>
 
@@ -46,17 +49,33 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
 
-
-
-
-	<!-- Creating bean for UserService and sending DAO object to UserService -->
-	<bean id="uservice" class="com.latzchaat.service.UserService">
-		<property name="userDAO" ref="userDAO"></property>
-	</bean>
-		<!-- Creating bean for UserDAO and sending session object to UserDAO -->
+	<!-- Creating bean for UserDAO and sending session object to UserDAO -->
 	<bean id="userDAO" class="com.latzchaat.dao.UserDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+
+	<!-- Creating bean for UserService and sending DAO object to UserService -->
+	<bean id="userService" class="com.latzchaat.service.UserService">
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+	
+	
+	
+	<!-- Creating bean for BlogsDAO and sending session object to UserDAO -->
+	<bean id="blogDAO" class="com.latzchaat.dao.BlogDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<!-- Creating bean for UserService and sending DAO object to UserService -->
+	<bean id="BlogsService" class="com.latzchaat.service.BlogsService">
+		<property name="blogDAO" ref="blogDAO"></property>
+	</bean>
+	
+	
+	
+	<context:component-scan base-package="com.latzchaat" />
 	<context:annotation-config />
 
 	<!-- Enable the configuration of transactional behavior based on annotations -->

@@ -6,8 +6,9 @@ import javax.persistence.*;
 
 import org.springframework.web.multipart.MultipartFile;
 
-@Entity
 @Table(name = "UserDetails")
+@Entity
+
 public class UserDetails implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +25,38 @@ public class UserDetails implements Serializable {
 	@Column(name = "password")
 	private String password;
 	@Transient
-	private String repassword;
+	private String confirmpassword;
 	@Transient
-	private MultipartFile imageupload;
+	private MultipartFile image;
+	@Column(name = "enabled")
+	private int enabled;
+	@Column(name = "role")
+	private String role;
+
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
 
 	public int getId() {
 		return id;
@@ -72,24 +102,16 @@ public class UserDetails implements Serializable {
 		return password;
 	}
 
+	public String getConfirmpassword() {
+		return confirmpassword;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getRepassword() {
-		return repassword;
-	}
-
-	public void setRepassword(String repassword) {
-		this.repassword = repassword;
-	}
-
-	public MultipartFile getImageupload() {
-		return imageupload;
-	}
-
-	public void setImageupload(MultipartFile imageupload) {
-		this.imageupload = imageupload;
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
 	}
 
 }
