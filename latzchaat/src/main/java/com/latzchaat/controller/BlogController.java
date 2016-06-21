@@ -2,10 +2,13 @@ package com.latzchaat.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,4 +40,15 @@ public class BlogController {
 		System.out.println(data);
 		return mv;
 	}
+	
+	@RequestMapping("/SingleBlog")
+
+	public ModelAndView singleBlogPage(@ModelAttribute("blog") Blogs blog, HttpServletRequest request
+			) {
+		
+		ModelAndView mv=new ModelAndView("SingleBlog");
+System.out.println(blog.getBlogid());
+return mv;
+	}
+	
 }

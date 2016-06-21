@@ -72,13 +72,21 @@
 
 						<tr ng-repeat="p in products | filter:searchText" class="table-responsive">
 
-							
-							
+<!-- 							
+							<td><p>{{p.blogid}}</p>
+								<p>{{p.owner}}</p></td> -->
 						 	 <td>
-								<form action="${session.getContextPath()}/autobazaar/ProductDetail"  method="post" >
+								<form action="${session.getContextPath()}/latzchaat/SingleBlog"  method="post" >
 								
-								<h2><a href="">{{p.title}}</a></h2>
-								<p>{{p.detail}}</p>
+								<!-- <h2><a type="submit" href="">{{p.title}}</a></h2> -->
+							
+								<input type="hidden" value="{{p.blogid}}" name="blogid"/>
+								<input type="hidden" value="{{p.title}}" name="title"/>
+								<input type="hidden" value="{{p.owner}}" name="owner"/>
+								<input type="hidden" value="{{p.description}}" name="description"/>
+								<input type="hidden" value="{{p.detail}}" name="detail"/>
+									<h1><button type="submit" class="btn btn-link">{{p.title}}</button></h1>
+								<p>{{p.blogid}}</p>
 								<p>{{p.owner}}</p>
 									 
 								</form>
