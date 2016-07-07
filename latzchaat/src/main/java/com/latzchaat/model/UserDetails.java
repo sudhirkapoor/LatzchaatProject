@@ -32,8 +32,50 @@ public class UserDetails implements Serializable {
 	private int enabled;
 	@Column(name = "role")
 	private String role;
-
+	@Column(name = "city")
+	private String city;
 	
+	@Column(name = "gender")
+	private String gender;
+	
+	@Column(name = "zipcode")
+	private String zipcode;
+	
+	@Column(name = "mobile")
+	private String mobile;
+	
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
 	public String getRole() {
 		return role;
 	}

@@ -9,45 +9,33 @@
 		<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/index" access="permitAll" />
 		<intercept-url pattern="/Blogs" access="permitAll" />
-		<!-- <intercept-url pattern="/UserProfile" access="hasRole('ROLE_USER')" /> -->
+		<!-- <intercept-url pattern="/UserProfile" access="hasRole('ROLE_USER')" 
+			/> -->
 		<!-- <intercept-url pattern="/Blogs" access="hasRole('ROLE_ADMIN')" /> -->
-		<form-login login-page="/Login" default-target-url="/"
+		<form-login login-page="/Login" login-processing-url="/login"
 			username-parameter="email" password-parameter="password"
-			authentication-failure-url="/Login" />
-		<logout logout-success-url="/index" />
+			authentication-success-handler-ref="successHandler"
+			authentication-failure-url="/Login?error" />
+		<logout logout-url="/perform_logout" delete-cookies="true" logout-success-url="/index?logout"/>
 		<csrf disabled="true" />
 	</http>
 	<!-- Authentication using xml only -->
-	<!-- <authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="admin" password="password1" authorities="ROLE_ADMIN" />
-
-			</user-service>
-		</authentication-provider>
-	</authentication-manager> -->
+	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
+		name="admin" password="password1" authorities="ROLE_ADMIN" /> </user-service> 
+		</authentication-provider> </authentication-manager> -->
 
 	<!-- Authentication using database connection -->
 	<authentication-manager>
 		<authentication-provider>
 
-			<!-- <jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select email,password, enabled from admin where email=?"
-				authorities-by-username-query="select email, role from admin where email =?" /> -->
 
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select email,password, enabled from userdetails where email=?"
 				authorities-by-username-query="select email, role from userdetails where email =?  " />
 
 
-
-			<user-service>
-				<user name="admin" password="password1" authorities="ROLE_ADMIN" />
-
-			</user-service>
-
 		</authentication-provider>
 
 	</authentication-manager>
-
+	<beans:bean id="successHandler" class="com.latzchaat.handler.SuccessHandler" />
 </beans:beans>

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.latzchaat.model.UserDetails;
 import com.latzchaat.service.UserService;
+
 @Controller
 public class UserController {
 	UserService userService;
@@ -40,38 +41,48 @@ public class UserController {
 		if (userDetails.getId() == 0) {
 			this.userService.registerUser(userDetails);
 			System.out.println(userDetails.getImage());
-			
-			 MultipartFile file = userDetails.getImage();
-			 System.out.println(file.getName());
-			 String  originalfile = file.getOriginalFilename();
-			 System.out.println("hi 3");
-			 String filepath = request.getSession().getServletContext().getRealPath("/resources/images/"); System.out.println(filepath); 
-			 String filename = filepath + "\\" + userDetails.getId() + ".jpg";
-			  System.out.println("hi 4"); 
-			  try {
-				  byte imagebyte[] = userDetails.getImage().getBytes();
-				  BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filename));
-			  fos.write(imagebyte); fos.close(); 
-			  System.out.println(filename);
-			  
-			  } 
-			  catch (IOException e) { 
-				  // TODO Auto-generated catch block
-			  e.printStackTrace();
-			  } 
-			  catch (Exception e) { 
-			   e.printStackTrace(); }
-			  
-			  }
-			 
-			
-			  else
-			  
-			  { /*this.userService.updateProduct(product)*/; }
-			 
-			
-		
-	return"redirect:/Register";
 
-}
+			MultipartFile file = userDetails.getImage();
+			System.out.println(file.getName());
+			String originalfile = file.getOriginalFilename();
+			System.out.println("hi 3");
+			String filepath = request.getSession().getServletContext().getRealPath("/resources/images/");
+			System.out.println(filepath);
+			String filename = filepath + "\\" + userDetails.getId() + ".jpg";
+			System.out.println("hi 4");
+			try {
+				byte imagebyte[] = userDetails.getImage().getBytes();
+				BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filename));
+				fos.write(imagebyte);
+				fos.close();
+				System.out.println(filename);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		else
+
+		{
+			/* this.userService.updateProduct(product) */;
+		}
+
+		return "redirect:/Register";
+	}
+	
+	
+	@RequestMapping(value = "/UpdateUser", method = RequestMethod.POST)
+	public String updateUserDetails(@Valid @ModelAttribute("userDetail") UserDetails userDetail, BindingResult result,
+			Model m, HttpServletRequest request) {
+		userService.updateUserDetails(userDetail);
+		
+		return "";
+		
+	}
+
 }

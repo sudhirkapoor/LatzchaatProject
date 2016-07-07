@@ -13,7 +13,7 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script src="<c:url value="${btstrpjs}/bootstrap.min.js"/>"></script>
+<script src="<c:url value="${btstrpjs}/bootstrap.min.js"/>"></script>
 <!-- <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 <script
@@ -29,8 +29,11 @@
 	href="<c:url value="${btstrpcss}/bootstrap-theme.min.css"/>">
 
 
-
-
+<script>
+	function formSubmit() {
+		document.getElementById("logout").submit();
+	}
+</script>
 <!-- 
 <link rel="stylesheet"
 	href="resources/bootstrap/css/bootstrap-theme.min.css"> -->
@@ -80,10 +83,9 @@ body {
 	position: relative;
 }
 
-/* body {
-	background-color: lightblue;
-} */
-
+ body {
+	background-color: #ffc299;
+} 
 .form_bg {
 	background-color: pink;
 	color: #666;
@@ -152,21 +154,40 @@ label {
 				</button>
 				<a href="index.html" class="navbar-brand">Letzchaaat</a>
 			</div>
+			<c:url value="/perform_logout" var="logout" />
+			<form action="${logout}" method="post" id="logout">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csfr.token}" />
+
+			</form>
 			<nav class="collapse navbar-collapse bs-navbar-collapse"
 				role="navigation">
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
 
-				</form>
+
+
 				<ul class="nav navbar-nav">
 					<li class="active"><a
 						href="${session.getContextPath()}/LetChatz/index">Home</a></li>
 					<li><a href="contact.html">Contact</a></li>
 					<li><a href="about.html">About US</a></li>
 				</ul>
+
+				<%-- <ul class="nav navbar-nav navbar-right">
+					<c:if test="${pageContext.request.userPrincipal.name!=null}">
+						<li class="scroll" style="color: white"><a href="#">${pageContext.request.userPrincipal.name}</a></li>
+						<li class="scroll"><a href="javascript:formSubmit()">LOGOUT</a></li>
+						<security:authentication var="user"
+							property="principal.authorities" />
+						<security:authorize var="LoggedIn" access="isAuthenticated()">
+							<security:authorize access="hasRole('ROLE_ADMIN')">
+               ADMIN
+                </security:authorize>
+							<security:authorize access="hasRole('ROLE_USER')">
+                USER
+                </security:authorize>
+						</security:authorize>
+					</c:if>
+				</ul> --%>
 			</nav>
 		</div>
 	</header>

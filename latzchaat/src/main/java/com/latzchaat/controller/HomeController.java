@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.latzchaat.model.Blogs;
 import com.latzchaat.model.UserDetails;
 
 @Controller
@@ -51,7 +52,13 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("ViewBlogs");			
 		return mv;
 	}
-	
+	@RequestMapping("/CreateBlog")
+	public ModelAndView createBlogPage(Model m) {
+		Blogs blog=new Blogs();
+		m.addAttribute("blog",blog);
+		ModelAndView mv = new ModelAndView("CreateBlog");			
+		return mv;
+	}
 	/*@RequestMapping("/UserHome")
 	public ModelAndView userHomePage() {
 		ModelAndView mv = new ModelAndView("UserHome");			

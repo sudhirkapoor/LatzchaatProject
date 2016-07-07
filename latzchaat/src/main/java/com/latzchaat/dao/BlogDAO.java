@@ -25,9 +25,9 @@ public class BlogDAO implements BlogInterface {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void insertBlog(Blogs blogs) {
-		// TODO Auto-generated method stub
-		
+	public void insertBlog(Blogs blog) {
+		Session session=sessionFactory.getCurrentSession();
+		session.save(blog);	
 	}
 
 	public Blogs getOneBlogs(int blogid) {

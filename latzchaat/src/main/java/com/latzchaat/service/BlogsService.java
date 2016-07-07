@@ -32,9 +32,9 @@ public class BlogsService {
 		return blogDAO.getAllBlogs();
 		
 	}
-	public void insertBlog(Blogs blogs)
+	public void insertBlog(Blogs blog)
 	{
-		blogDAO.insertBlog(blogs);
+		blogDAO.insertBlog(blog);
 	}
 	public Blogs getOneBlog(int blogid){
 		

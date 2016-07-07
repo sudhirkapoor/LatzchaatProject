@@ -26,6 +26,11 @@ public class UserService {
 		
 		this.userDAO= userDAO;
 	}
+	
+	public UserDetails getUserByName(String email)
+	{
+		return userDAO.getUserByName(email);
+	}
 	/*Service Method for user registration*/
 	public void registerUser(UserDetails userDetails) {
 		/*
@@ -35,6 +40,11 @@ public class UserService {
 		System.out.println("Hi from service");
 		userDAO.registerUser(userDetails);
 		System.out.println("bbye from service");
+	}
+	
+	
+	public void updateUserDetails(UserDetails userDetail) {
+		userDAO.updateUserDetails(userDetail);		
 	}
 
 }

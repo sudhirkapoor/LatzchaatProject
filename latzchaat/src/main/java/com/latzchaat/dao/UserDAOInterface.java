@@ -8,6 +8,7 @@ import com.latzchaat.model.UserDetails;
 
 public interface UserDAOInterface {
 	public void registerUser(UserDetails user);
-
+	public UserDetails getUserByName(String email);
 	public UserDetails getUserDetails(int uid);
+	public void updateUserDetails(UserDetails userDetail);
 }
