@@ -39,8 +39,8 @@
 		<servlet-name>application-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	<!-- 
-	 
+	
+	 <!-- 
 	<filter>
 		<filter-name>continuation</filter-name>
 		<filter-class>org.eclipse.jetty.continuation.ContinuationFilter</filter-class>
@@ -91,12 +91,12 @@
 		</init-param>
 			
 	</servlet>
- 	
- -->	
+ --> 	
 	
- 
+	
+ <!-- 
    <servlet-mapping>
 		<servlet-name>Letzchaat</servlet-name>
 		<url-pattern>/Letzchaat/*</url-pattern>
-	</servlet-mapping> 
+	</servlet-mapping>  -->
  </web-app>

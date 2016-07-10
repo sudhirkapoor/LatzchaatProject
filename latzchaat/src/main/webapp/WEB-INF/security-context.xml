@@ -8,7 +8,7 @@
 
 		<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/index" access="permitAll" />
-		<intercept-url pattern="/Blogs" access="permitAll" />
+		
 		<!-- <intercept-url pattern="/UserProfile" access="hasRole('ROLE_USER')" 
 			/> -->
 		<!-- <intercept-url pattern="/Blogs" access="hasRole('ROLE_ADMIN')" /> -->

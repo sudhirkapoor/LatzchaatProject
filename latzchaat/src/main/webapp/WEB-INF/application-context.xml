@@ -17,21 +17,21 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:~/latzchaatData" />
+		<property name="url" value="jdbc:h2:~/latzchaatDataBase11" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
 
 
 	<!-- Session Factory Declaration -->
-	<bean id="sessionFactory"
+		<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>com.latzchaat.model.UserDetails</value>
 				<value>com.latzchaat.model.Blogs</value>
-				<!-- <value>com.latzchaat.model.Administrator</value> -->
+				<value>com.latzchaat.model.UserDetails</value>
+				<value>com.latzchaat.model.Jobs</value>
 			</list>
 		</property>
 
@@ -68,9 +68,22 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	</bean>
 
 
-	<!-- Creating bean for UserService and sending DAO object to UserService -->
+	<!-- Creating bean for BlogService and sending DAO object to UserService -->
 	<bean id="BlogsService" class="com.latzchaat.service.BlogsService">
 		<property name="blogDAO" ref="blogDAO"></property>
+	</bean>
+	
+
+	
+	<!-- Creating bean for BlogsDAO and sending session object to UserDAO -->
+	<bean id="jobDAO" class="com.latzchaat.dao.JobDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<!-- Creating bean for BlogService and sending DAO object to UserService -->
+	<bean id="jobService" class="com.latzchaat.service.JobService">
+		<property name="jobDAO" ref="jobDAO"></property>
 	</bean>
 	
 	

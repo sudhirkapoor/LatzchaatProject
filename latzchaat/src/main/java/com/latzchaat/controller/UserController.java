@@ -3,6 +3,7 @@ package com.latzchaat.controller;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,6 +58,7 @@ public class UserController {
 				fos.write(imagebyte);
 				fos.close();
 				System.out.println(filename);
+				System.out.println(userDetails.getFname());
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -76,13 +79,23 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value = "/UpdateUser", method = RequestMethod.POST)
-	public String updateUserDetails(@Valid @ModelAttribute("userDetail") UserDetails userDetail, BindingResult result,
+	@RequestMapping(value = "/UserHome/{id}", method = RequestMethod.POST)
+	
+	  public String update(@PathVariable("id")int id ,@ModelAttribute("u") UserDetails userDetails,Map map)
+	  {
+		 System.out.println("user id is" +userDetails.getId());
+		 userService.equals(userDetails);
+		/* u=userService.getUserById(id);*/
+		/*map.put("user",u);*/
+		 System.out.println("Before user home");
+		  return "redirect:/UserHome";
+	  }
+	/*public String updateUserDetails(@Valid @ModelAttribute("userDetail") UserDetails userDetail, BindingResult result,
 			Model m, HttpServletRequest request) {
 		userService.updateUserDetails(userDetail);
 		
 		return "";
 		
-	}
+	}*/
 
 }

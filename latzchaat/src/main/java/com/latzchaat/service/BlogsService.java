@@ -41,4 +41,12 @@ public class BlogsService {
 		return blogDAO.getOneBlogs(blogid);
 	}
 
+	public void deleteBlog(int blogid)
+	{
+		blogDAO.deleteBlog(blogid);
+	}
+	public void updateBlog(Blogs blog)
+	{
+		blogDAO.updateBlog(blog);
+	}
 }

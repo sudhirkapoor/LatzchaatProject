@@ -72,14 +72,27 @@ public class BlogController {
 		 System.out.println(data);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/User")
+	public ModelAndView get(Model model, Principal p) {
+		
+		ModelAndView mv=new ModelAndView("sample");
+		mv.addObject("userDetail",userService.getUserByName(p.getName()));
+		return mv;
+	}
+	
+	
 
 	@RequestMapping(value = "/InsertBlog", method = RequestMethod.POST)
 	public String insertBlog(@Valid @ModelAttribute("blog") Blogs blog, BindingResult result, Model m,
 			HttpServletRequest request) {
+		if(blog.getOwner()!="" || blog.getStatus()!="")
+		{
 		blog.setOwner("Student");
 		blog.setStatus("Inactive");
+		}
 		blogsService.insertBlog(blog);
-		return "redirect:/CreateBlog";
+		return "redirect:/UserHome";
 	}
 
 	@RequestMapping("/SingleBlog")

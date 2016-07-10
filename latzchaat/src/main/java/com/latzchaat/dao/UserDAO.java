@@ -32,6 +32,8 @@ public class UserDAO implements UserDAOInterface {
 		Criteria c=sessionFactory.getCurrentSession().createCriteria(UserDetails.class);
 		c.add(Restrictions.like("email", email));
 		return (UserDetails)c.uniqueResult();
+		
+		
 	}
 
 	public UserDetails getUserDetails(int uid) {
@@ -44,15 +46,33 @@ public class UserDAO implements UserDAOInterface {
 		Session session=sessionFactory.getCurrentSession();
 		System.out.println("Hello from DAO");
 		userDetails.setEnabled(1);
-		userDetails.setRole("ROLE_USER");
+		userDetails.setRole("ROLE_ADMIN");
 		session.save(userDetails);		
 	}
 	
 	public void updateUserDetails(UserDetails userDetail)
 	{
 		Session session=sessionFactory.getCurrentSession();
-		session.update(userDetail);
+		UserDetails u=(UserDetails)session.get(UserDetails.class, new Integer(userDetail.getId()));
+		   u.setFname(userDetail.getFname());
+		   u.setLname(userDetail.getLname());
+		   u.setCity(userDetail.getCity());
+		   u.setMobile(userDetail.getMobile());
+		   u.setEmail(userDetail.getEmail());
+		   u.setGender(userDetail.getGender());
+		   u.setZipcode(userDetail.getZipcode());
+		   u.setImage(userDetail.getImage());
+		   
+		   System.out.println(u.getCity());
+		   System.err.println(u.getFname());
+		   System.err.println(u.getGender());
+		   session.saveOrUpdate(u);
+		//session.update(userDetail);
 	}
-
+	public UserDetails getUser() {
+		Session se=sessionFactory.getCurrentSession();
+		
+		return null;
+	}
 
 }

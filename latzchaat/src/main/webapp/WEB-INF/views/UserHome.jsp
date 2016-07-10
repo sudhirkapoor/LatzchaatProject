@@ -144,7 +144,7 @@
 			
 			<style>#form{backgroung-color:#ffa366;}</style>			   
  <div class="container" >
-  <form:form id="form" action="UpdateUser"  class="form-horizontal well"  commandName="userDetail">
+  <form:form id="form" action="UserHome/${userDetail.id}"  class="form-horizontal well"  commandName="userDetail">
     <h1>Edit Profile</h1>
   	<hr>
 	<div  class="row">

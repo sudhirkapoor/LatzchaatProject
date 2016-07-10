@@ -9,15 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.latzchaat.model.Blogs;
+import com.latzchaat.model.Jobs;
 
 @Repository
-public class BlogDAO implements BlogInterface {
-
+public class JobDAO implements JobDAOInterface {
 	SessionFactory sessionFactory;
 
 	@Autowired
-	public BlogDAO(SessionFactory sessionFactory) {
-		super();
+	public JobDAO(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
@@ -25,34 +24,33 @@ public class BlogDAO implements BlogInterface {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void insertBlog(Blogs blog) {
+	public void insertJob(Jobs job) {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(blog);
+		session.save(job);
 	}
 
-	public Blogs getOneBlogs(int blogid) {
+	public Jobs getOneJob(int jobid) {
 		Session session = sessionFactory.getCurrentSession();
-		return (Blogs) session.get(Blogs.class, new Integer(blogid));
+		return (Jobs) session.get(Jobs.class, new Integer(jobid));
+
 	}
 
-	public List<Blogs> getAllBlogs() {
+	public List<Jobs> getAllJobs() {
 		Session session = sessionFactory.getCurrentSession();
-		Query q = session.createQuery("from Blogs");
-		List<Blogs> blogs = q.list();
-		return blogs;
+		Query q = session.createQuery("from Jobs");
+		List<Jobs> jobs = q.list();
+		return jobs;
 	}
 
-	public void deleteBlog(int blogid) {
+	public void deleteJob(int jobid) {
 		Session session = sessionFactory.getCurrentSession();
-		Blogs blog=(Blogs)session.load(Blogs.class, new Integer(blogid));
-		session.delete(blog);				
+		Jobs job = (Jobs) session.load(Jobs.class, new Integer(jobid));
+		session.delete(job);
 	}
 
-	public void updateBlog(Blogs blog) {
-		Session session=sessionFactory.getCurrentSession();
-		session.update(blog);
-		
+	public void updateJob(Jobs job) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(job);
 	}
 
-	
 }

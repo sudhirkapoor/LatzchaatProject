@@ -83,9 +83,10 @@ body {
 	position: relative;
 }
 
- body {
+body {
 	background-color: #ffc299;
-} 
+}
+
 .form_bg {
 	background-color: pink;
 	color: #666;
@@ -152,14 +153,9 @@ label {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a href="index.html" class="navbar-brand">Letzchaaat</a>
+				<a href="index.html" class="navbar-brand">Letzchaat</a>
 			</div>
-			<c:url value="/perform_logout" var="logout" />
-			<form action="${logout}" method="post" id="logout">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csfr.token}" />
-
-			</form>
+			
 			<nav class="collapse navbar-collapse bs-navbar-collapse"
 				role="navigation">
 
@@ -171,13 +167,17 @@ label {
 					<li><a href="contact.html">Contact</a></li>
 					<li><a href="about.html">About US</a></li>
 				</ul>
+<c:url value="/perform_logout" var="logout" />
+			<form action="${logout}" method="post" id="logout">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csfr.token}" />
 
-				<%-- <ul class="nav navbar-nav navbar-right">
+			</form>
+				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${pageContext.request.userPrincipal.name!=null}">
 						<li class="scroll" style="color: white"><a href="#">${pageContext.request.userPrincipal.name}</a></li>
 						<li class="scroll"><a href="javascript:formSubmit()">LOGOUT</a></li>
-						<security:authentication var="user"
-							property="principal.authorities" />
+						<security:authentication var="user"	property="principal.authorities" />
 						<security:authorize var="LoggedIn" access="isAuthenticated()">
 							<security:authorize access="hasRole('ROLE_ADMIN')">
                ADMIN
@@ -187,7 +187,7 @@ label {
                 </security:authorize>
 						</security:authorize>
 					</c:if>
-				</ul> --%>
+				</ul>
 			</nav>
 		</div>
 	</header>
