@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.latzchaat.model.Blogs;
+import com.latzchaat.model.Jobs;
 
 @Repository
 public class BlogDAO implements BlogInterface {
@@ -53,6 +54,11 @@ public class BlogDAO implements BlogInterface {
 		session.update(blog);
 		
 	}
-
+	public List<Jobs> getAllJobs() {
+		Session session = sessionFactory.getCurrentSession();
+		Query q = session.createQuery("from Jobs");
+		List<Jobs> jobs = q.list();
+		return jobs;
+	}
 	
 }

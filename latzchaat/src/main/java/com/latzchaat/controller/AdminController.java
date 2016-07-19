@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.latzchaat.model.Blogs;
+import com.latzchaat.model.Jobs;
 import com.latzchaat.service.BlogsService;
 import com.latzchaat.service.UserService;
 
@@ -30,7 +31,7 @@ public class AdminController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	BlogsService blogsService;
 
 	public void setBlogsService(BlogsService blogsService) {
@@ -39,34 +40,30 @@ public class AdminController {
 
 	@Autowired
 	public AdminController(BlogsService blogsService) {
-		
+
 		this.blogsService = blogsService;
 	}
 
 	@RequestMapping(value = "/AdminHome")
 	public ModelAndView getAllBlogs(Model model, Principal p) {
-		List<Blogs> blogs = blogsService.getAllBlogs();		
-		
+		List<Blogs> blogs = blogsService.getAllBlogs();
+
 		ModelAndView mv = new ModelAndView("AdminHome");
-		model.addAttribute("blog",new Blogs());
+		model.addAttribute("blog", new Blogs());
 		model.addAttribute("blogs", blogs);
-		
-		
-		
-		 System.out.println(new Gson().toJson(blogs));
+		model.addAttribute("job", new Jobs());
+		model.addAttribute("jobs", blogsService.getAllJobs());
+		System.out.println(new Gson().toJson(blogs));
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/InsertAdminBlog", method = RequestMethod.POST)
 	public String insertAdminBlog(@Valid @ModelAttribute("blog") Blogs blog, BindingResult result, Model m,
 			HttpServletRequest request) {
-		if(blog.getBlogid()==0)
-		{
+		if (blog.getBlogid() == 0) {
 			System.out.println("insert");
 			blogsService.insertBlog(blog);
-		}
-		else
-		{
+		} else {
 			System.out.println("update");
 			this.blogsService.updateBlog(blog);
 		}
@@ -78,7 +75,7 @@ public class AdminController {
 		this.blogsService.deleteBlog(blogid);
 		return "redirect:/AdminHome";
 	}
-	
+
 	@RequestMapping("/Admin/updateBlog/{blogid}")
 	public String updateProduct(@PathVariable("blogid") int blogid, Model model) {
 		System.out.println("Controller start");
@@ -87,5 +84,5 @@ public class AdminController {
 		System.out.println("Controller end");
 		return "AdminHome";
 	}
-	
+
 }

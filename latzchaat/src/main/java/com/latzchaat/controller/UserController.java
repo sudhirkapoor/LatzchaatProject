@@ -75,7 +75,7 @@ public class UserController {
 			/* this.userService.updateProduct(product) */;
 		}
 
-		return "redirect:/Register";
+		return "redirect:/Login";
 	}
 	
 	
@@ -84,7 +84,7 @@ public class UserController {
 	  public String update(@PathVariable("id")int id ,@ModelAttribute("u") UserDetails userDetails,Map map)
 	  {
 		 System.out.println("user id is" +userDetails.getId());
-		 userService.equals(userDetails);
+		 userService.updateUserDetails(userDetails);
 		/* u=userService.getUserById(id);*/
 		/*map.put("user",u);*/
 		 System.out.println("Before user home");

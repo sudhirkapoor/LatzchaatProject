@@ -1,21 +1,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
-	
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/websocket
+http://www.springframework.org/schema/websocket/spring-websocket.xsd
       ">
 
 
 	<!-- Scaning and loading all packages which reside under com.autobazaar -->
 	<context:component-scan base-package="com.latzchaat" />
-	
+
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-		<!-- Creating bean multipart resolver for images -->
+	<!-- Creating bean multipart resolver for images -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="5242880" />
@@ -33,5 +35,12 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		</property>
 	</bean>
 
+	<websocket:message-broker
+		application-destination-prefix="/app">
+		<websocket:stomp-endpoint path="/chat">
+			<websocket:sockjs></websocket:sockjs>
+		</websocket:stomp-endpoint>
+		<websocket:simple-broker prefix="/topic" />
+	</websocket:message-broker>
 
 </beans>

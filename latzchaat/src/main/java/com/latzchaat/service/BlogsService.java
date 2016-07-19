@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.latzchaat.dao.BlogDAO;
 import com.latzchaat.model.Blogs;
+import com.latzchaat.model.Jobs;
 @Service
 @Transactional
 @EnableTransactionManagement
@@ -48,5 +49,10 @@ public class BlogsService {
 	public void updateBlog(Blogs blog)
 	{
 		blogDAO.updateBlog(blog);
+	}
+	
+	public List<Jobs> getAllJobs()
+	{
+		return blogDAO.getAllJobs();
 	}
 }

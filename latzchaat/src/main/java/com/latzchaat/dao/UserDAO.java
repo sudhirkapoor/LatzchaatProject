@@ -46,7 +46,7 @@ public class UserDAO implements UserDAOInterface {
 		Session session=sessionFactory.getCurrentSession();
 		System.out.println("Hello from DAO");
 		userDetails.setEnabled(1);
-		userDetails.setRole("ROLE_ADMIN");
+		userDetails.setRole("ROLE_USER");
 		session.save(userDetails);		
 	}
 	

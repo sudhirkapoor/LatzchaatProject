@@ -1,5 +1,10 @@
 package com.latzchaat.controller;
 
+import java.security.Principal;
+import java.util.Date;
+
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.latzchaat.model.Blogs;
 import com.latzchaat.model.UserDetails;
-
+import com.latzchaat.model.*;
 @Controller
 public class HomeController {
 
@@ -25,6 +30,19 @@ public class HomeController {
 		return mv;
 	}
 
+	@RequestMapping("/About")
+	public ModelAndView aboutPage() {
+		ModelAndView mv = new ModelAndView("About");
+		return mv;
+	}
+
+	@RequestMapping("/Contact")
+	public ModelAndView contactPage() {
+		ModelAndView mv = new ModelAndView("Contact");
+		return mv;
+	}
+
+	
 	UserDetails userDetails;
 	/* Mapping request for Register.jsp page */
 	@RequestMapping("/Register")
@@ -59,6 +77,18 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("CreateBlog");			
 		return mv;
 	}
+	
+	@RequestMapping("/chat1")
+	public ModelAndView chatPage() {
+		ModelAndView mv = new ModelAndView("Chat");			
+		return mv;
+	}
+	
+	@MessageMapping("/chat")
+	  @SendTo("/topic/message")
+	  public OutputMessage sendMessage(Message message, Principal principal) {
+	    return new OutputMessage(message, new Date(),principal.getName());
+	  }
 	/*@RequestMapping("/UserHome")
 	public ModelAndView userHomePage() {
 		ModelAndView mv = new ModelAndView("UserHome");			

@@ -69,6 +69,7 @@ public class BlogController {
 		
 		mv.addObject("userDetail",userService.getUserByName(p.getName()));
 		mv.addObject("data", data);
+		mv.addObject("jobs", blogsService.getAllJobs());
 		 System.out.println(data);
 		return mv;
 	}

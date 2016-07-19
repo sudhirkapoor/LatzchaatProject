@@ -82,10 +82,10 @@ body {
 .dropdown-submenu {
 	position: relative;
 }
-
+/* 
 body {
 	background-color: #ffc299;
-}
+} */
 
 .form_bg {
 	background-color: pink;
@@ -153,7 +153,7 @@ label {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a href="index.html" class="navbar-brand">Letzchaat</a>
+				<a href="${session.getContextPath()}/latzchaat/index" class="navbar-brand">Letzchaat</a>
 			</div>
 			
 			<nav class="collapse navbar-collapse bs-navbar-collapse"
@@ -162,10 +162,12 @@ label {
 
 
 				<ul class="nav navbar-nav">
+				<c:if test="${pageContext.request.userPrincipal.name!=null}">
 					<li class="active"><a
-						href="${session.getContextPath()}/LetChatz/index">Home</a></li>
-					<li><a href="contact.html">Contact</a></li>
-					<li><a href="about.html">About US</a></li>
+						href="${session.getContextPath()}/latzchaat/UserHome">Home</a></li>
+						</c:if>
+					<li><a href="${session.getContextPath()}/latzchaat/Contact">Contact</a></li>
+					<li><a href="${session.getContextPath()}/latzchaat/About">About US</a></li>
 				</ul>
 <c:url value="/perform_logout" var="logout" />
 			<form action="${logout}" method="post" id="logout">

@@ -9,9 +9,12 @@
 		<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/index" access="permitAll" />
 		
-		<!-- <intercept-url pattern="/UserProfile" access="hasRole('ROLE_USER')" 
-			/> -->
-		<!-- <intercept-url pattern="/Blogs" access="hasRole('ROLE_ADMIN')" /> -->
+		<intercept-url pattern="/UserHome" access="hasRole('ROLE_USER')" 
+			/>
+			
+		<intercept-url pattern="/chat1" access="hasRole('ROLE_USER')" 
+			/>
+		<intercept-url pattern="/AdminHome" access="hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/Login" login-processing-url="/login"
 			username-parameter="email" password-parameter="password"
 			authentication-success-handler-ref="successHandler"

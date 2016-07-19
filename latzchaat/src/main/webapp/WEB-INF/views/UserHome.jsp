@@ -10,8 +10,16 @@
 		&nbsp;
 		&nbsp;
 		&nbsp;
-		<form:form action="edit/${userDetail.id}" commandName="userDetail">
-			<img src="resources/images/${userDetail.id}.jpg" class="img-circle" height="300" width="300"/> 
+		<form:form commandName="userDetail"> <%-- action="edit/${userDetail.id}"  --%>
+		<div>
+			<img src="resources/images/${userDetail.id}.jpg" class="img-circle" height="300" width="300"/>
+			</div>
+			<div>
+			<center>
+			<h5>${userDetail.displayname}</h5>
+			</center>
+			</div>
+			 
 				</form:form>
 			<div></div>
 		</div>
@@ -22,20 +30,132 @@
 
 
 			<div class="container">
-				<h2>Dynamic Tabs</h2>
+			<form:form commandName="userDetail">
+			<h2>Hello ${userDetail.displayname}</h2>
+			</form:form>
+				
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#home">Home</a></li>
 					<li><a href="#menu1">Blogs</a></li>
-					<li><a href="#menu2">Chat</a></li>
+					<li><a href="${session.getContextPath()}/latzchaat/chat1">Chat</a></li>
 					<li><a href="#menu3">Profile</a></li>
 				</ul>
 
 				<div class="tab-content">
 					<div id="home" class="tab-pane fade in active">
-						<h3>HOME</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						&nbsp;&nbsp;
+					
+					<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div id="imageslider" class="carousel slide" data-ride="carousel">
+
+				<ol class="carousel-indicators">
+					<li data-target="#imageslider" data-slide-to="0" class="active"></li>
+					<li data-target="#imageslider" data-slide-to="1"></li>
+					<li data-target="#imageslider" data-slide-to="2"></li>
+					<li data-target="#imageslider" data-slide-to="3"></li>
+					<li data-target="#imageslider" data-slide-to="4"></li>
+					<li data-target="#imageslider" data-slide-to="6"></li>
+				</ol>
+				<center>
+					<div class="carousel-inner">
+
+						<div class="item active">
+							<img class="img-rounded"
+								style="height: 450px;width:100%; background-size: cover;"
+								src="resources/images/NIITDT.jpg" />
+						</div>
+						<div class="item">
+							<img class="img-rounded"
+								style="height: 450px; background-size: cover;width:100%"
+								src="resources/images/Knowledge.JPG" />
+						</div>
+						<div class="item">
+							<img class="img-rounded"
+								style="height: 450px; background-size: cover;width:100%"
+								src="resources/images/Boost.jpg" />
+						</div>
+
+						<div class="item">
+							<img class="img-rounded"
+								style="height: 450px; width:100%; background-size: cover;"
+								src="resources/images/Benefit.JPG" />
+						</div>
+
+						<div class="item">
+							<img class="img-rounded"
+								style="height: 450px; width:100%; background-size: cover;"
+								src="resources/images/niitportal.jpg" />
+						</div>
+
+						
+					</div>
+				</center>
+
+				<a class="carousel-control left" href="#imageslider"
+					data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left"></span>
+				</a> <a class="carousel-control right" href="#imageslider"
+					data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+
+<form:form commandName="jobs">
+			<h3>Jobs List</h3>
+			<c:if test="${!empty jobs}">
+				<table class="tg table table-striped">
+					<tr style="background: #a2cad3; color: white">
+						
+						<th width="120">Profile</th>
+						<th width="60">Job Description</th>
+						<th width="60">Company</th>
+						<th width="80">Salary</th>
+						<th width="120">Interview Address</th>
+						<th width="60">Date</th>
+						<th width="60">Eligibility</th>
+						<!-- <th width="60">Update</th>
+						<th width="60">Delete</th> -->
+					</tr>
+					<c:forEach items="${jobs}" var="job">
+						<tr>
+							<%-- <td>${job.jobid}</td> --%>
+							<input type="hidden" value="${job.jobid }" name="jobid"></input>
+							<td>${job.profile}</td>
+							<td>${job.description}</td>
+							<td>${job.company}</td>
+							<td>${job.salary}</td>
+							<td>${job.address}</td>
+							<td>${job.date}</td>
+							<td>${job.eligibility}</td>
+						<%-- 	<td><a class="btn btn-info"
+								href="<c:url value='/UpdateJob/${job.jobid}' />">Update
+									<span class="glyphicon glyphicon-edit"></span>
+							</a></td>
+							<td><a class="btn btn-danger"
+								href="<c:url value='/DeleteJob/${job.jobid}' />">Delete
+									<span class="glyphicon glyphicon-remove-sign"></span>
+							</a></td> --%>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+			</form:form>
+		</div>
+	
+</div>
+	
+					</div>
+					
 					</div>
 					<div id="menu1" class="tab-pane fade">
 						<div ng-app="search">
@@ -113,38 +233,21 @@
 </div>
 		</div>				
 					</div>
+					
+					
+					
+					
 					<div id="menu2" class="tab-pane fade">
 						<h3>Menu 2</h3>
-						
-<div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    /*
-    var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
-        var d = document, s = d.createElement('script');
-        
-        s.src = '//EXAMPLE.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
-        
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>​
+
+
 					</div>
 					<div id="menu3" class="tab-pane fade">
 						<h3>Profile</h3>
 			
 			<style>#form{backgroung-color:#ffa366;}</style>			   
  <div class="container" >
-  <form:form id="form" action="UserHome/${userDetail.id}"  class="form-horizontal well"  commandName="userDetail">
+  <form:form id="form" action="UserHome/${userDetail.id}"  class="form-horizontal well" modelAttribute="userDetail"  commandName="userDetail">
     <h1>Edit Profile</h1>
   	<hr>
 	<div  class="row">
@@ -161,7 +264,7 @@
       <!-- edit form column -->
     <div class="col-md-8 personal-info">
         <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <a class="panel-close close" data-dismiss="alert">x</a> 
           <i class="fa fa-coffee"></i>
         <strong>STUDENT INFO</strong>
         </div> 

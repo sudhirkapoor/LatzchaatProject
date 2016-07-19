@@ -32,6 +32,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 				<value>com.latzchaat.model.Blogs</value>
 				<value>com.latzchaat.model.UserDetails</value>
 				<value>com.latzchaat.model.Jobs</value>
+				<!-- <value>com.latzchaat.model.Forum</value> -->
 			</list>
 		</property>
 
@@ -85,6 +86,16 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<bean id="jobService" class="com.latzchaat.service.JobService">
 		<property name="jobDAO" ref="jobDAO"></property>
 	</bean>
+	
+	<!-- <bean id="forumDAO" class="com.latzchaat.dao.ForumDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	Creating bean for BlogService and sending DAO object to UserService
+	<bean id="forumService" class="com.latzchaat.service.ForumService">
+		<property name="forumDAO" ref="forumDAO"></property>
+	</bean> -->
 	
 	
 	

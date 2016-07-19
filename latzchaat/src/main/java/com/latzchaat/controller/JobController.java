@@ -35,7 +35,7 @@ public class JobController {
 		this.jobService = jobService;
 	}
 	
-	@RequestMapping(value = "/sample")
+	/*@RequestMapping(value = "/sample")
 	public ModelAndView getAllBlogs(Model model, Principal p) {
 		List<Jobs> jobs = jobService.getAllJobs();		
 		
@@ -44,7 +44,7 @@ public class JobController {
 		model.addAttribute("jobs", jobs);
 		 
 		return mv;
-	}
+	}*/
 	
 	@RequestMapping(value = "/InsertJob", method = RequestMethod.POST)
 	public String insertJob(@Valid @ModelAttribute("job") Jobs job, BindingResult result, Model m,
