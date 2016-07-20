@@ -34,25 +34,9 @@
 		document.getElementById("logout").submit();
 	}
 </script>
-<!-- 
-<link rel="stylesheet"
-	href="resources/bootstrap/css/bootstrap-theme.min.css"> -->
 
-<!-- 
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"
-	rel="stylesheet" type="text/css" />
 
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet" />
 
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"
-	rel="stylesheet" />
-<script src="http://code.jquery.com/jquery-latest.min.js"
-	type="text/javascript"></script>
- -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
 <!-- <script type="text/javascript">
@@ -166,8 +150,7 @@ label {
 					<li class="active"><a
 						href="${session.getContextPath()}/latzchaat/AdminHome">Home</a></li>
 						</c:if>
-					<li><a href="${session.getContextPath()}/latzchaat/Contact">Contact</a></li>
-					<li><a href="${session.getContextPath()}/latzchaat/About">About US</a></li>
+					
 				</ul>
 <c:url value="/perform_logout" var="logout" />
 			<form action="${logout}" method="post" id="logout">
@@ -178,7 +161,7 @@ label {
 				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${pageContext.request.userPrincipal.name!=null}">
 						<li class="scroll" style="color: white"><a href="#">${pageContext.request.userPrincipal.name}</a></li>
-						<li class="scroll"><a href="javascript:formSubmit()">LOGOUT</a></li>
+						<li class="scroll"><a href="javascript:formSubmit()">Logout</a></li>
 						<security:authentication var="user"	property="principal.authorities" />
 						<security:authorize var="LoggedIn" access="isAuthenticated()">
 							<security:authorize access="hasRole('ROLE_ADMIN')">

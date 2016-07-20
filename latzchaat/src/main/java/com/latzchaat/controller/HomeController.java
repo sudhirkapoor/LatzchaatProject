@@ -3,12 +3,17 @@ package com.latzchaat.controller;
 import java.security.Principal;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.latzchaat.model.Blogs;
@@ -53,11 +58,38 @@ public class HomeController {
 		
 		return mv;
 	}
-	@RequestMapping("/Login")
+	/*@RequestMapping("/Login")
 	public ModelAndView loginPage() {
 		ModelAndView mv = new ModelAndView("Login");			
 		return mv;
+	}*/
+	
+	@RequestMapping(value = "/Login")
+	public ModelAndView loginpage(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, Model m) {
+
+		if (error != null) {
+			m.addAttribute("error", "Invalid user details");
+		}
+		if (logout != null) {
+			m.addAttribute("msg", "Logout");
+		}
+		/* m.addAttribute("user",u); */
+
+		return new ModelAndView("Login");
 	}
+
+	@RequestMapping(value = "/Login", method = RequestMethod.POST)
+	public String logincheck(@Valid @ModelAttribute("validate") UserDetails u, BindingResult result, Model model,
+			@RequestParam("id") int id) {
+		System.out.println("id value is" + id);
+		if (result.hasErrors()) {
+			return "Login";
+		}
+
+		return "Login";
+	}
+
 	
 	@RequestMapping("/UserProfile")
 	public ModelAndView userProfilePage() {

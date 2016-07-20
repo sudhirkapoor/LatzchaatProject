@@ -13,6 +13,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.latzchaat" />
+	
 	<!-- Data Source Declaration -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -32,7 +33,6 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 				<value>com.latzchaat.model.Blogs</value>
 				<value>com.latzchaat.model.UserDetails</value>
 				<value>com.latzchaat.model.Jobs</value>
-				<!-- <value>com.latzchaat.model.Forum</value> -->
 			</list>
 		</property>
 
@@ -63,40 +63,31 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
 	
 	
-	<!-- Creating bean for BlogsDAO and sending session object to UserDAO -->
+	<!-- Creating bean for BlogsDAO and sending session object to BlogsDAO -->
 	<bean id="blogDAO" class="com.latzchaat.dao.BlogDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
 
-	<!-- Creating bean for BlogService and sending DAO object to UserService -->
+	<!-- Creating bean for BlogService and sending DAO object to BlogService -->
 	<bean id="BlogsService" class="com.latzchaat.service.BlogsService">
 		<property name="blogDAO" ref="blogDAO"></property>
 	</bean>
 	
 
 	
-	<!-- Creating bean for BlogsDAO and sending session object to UserDAO -->
+	<!-- Creating bean for JobDAO and sending session object to JobDAO -->
 	<bean id="jobDAO" class="com.latzchaat.dao.JobDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
 
-	<!-- Creating bean for BlogService and sending DAO object to UserService -->
+	<!-- Creating bean for BlogService and sending DAO object to JobService -->
 	<bean id="jobService" class="com.latzchaat.service.JobService">
 		<property name="jobDAO" ref="jobDAO"></property>
 	</bean>
 	
-	<!-- <bean id="forumDAO" class="com.latzchaat.dao.ForumDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
 
-
-	Creating bean for BlogService and sending DAO object to UserService
-	<bean id="forumService" class="com.latzchaat.service.ForumService">
-		<property name="forumDAO" ref="forumDAO"></property>
-	</bean> -->
-	
 	
 	
 	<context:component-scan base-package="com.latzchaat" />

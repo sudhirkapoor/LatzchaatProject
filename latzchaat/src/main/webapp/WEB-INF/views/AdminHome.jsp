@@ -74,7 +74,7 @@
 																	</div>
 																	<div class="col-sm-10">
 																		<form:input type="text" class="form-control"
-																			id="title" path="title" placeholder="Title" />
+																			id="title" path="title" required="Please Enter Title" placeholder="Title" />
 																	</div>
 																</div>
 																<div class="form-group">
@@ -82,7 +82,7 @@
 																		<label for="description" class="control-label">Description</label>
 																	</div>
 																	<div class="col-sm-10">
-																		<form:input type="text" class="form-control"
+																		<form:input type="text" required="Please Enter Description" class="form-control"
 																			id="description" placeholder="Description"
 																			path="description" />
 																	</div>
@@ -94,7 +94,7 @@
 																	</div>
 																	<div class="col-sm-10">
 																		<form:textarea class="form-control" id="detail"
-																			path="detail" placeholder="Write details" rows="10"
+																			path="detail" placeholder="Write details" required="Please Enter Blog Detail" rows="10"
 																			cols="100" />
 																	</div>
 																</div>
@@ -104,7 +104,7 @@
 																	</div>
 																	<div class="col-sm-10">
 																		<form:input type="text" class="form-control"
-																			id="status" placeholder="Status" path="status" />
+																			id="status" placeholder="Status" required="Please Enter Status" path="status" />
 																	</div>
 																</div>
 																<div class="form-group">
@@ -113,7 +113,7 @@
 																	</div>
 																	<div class="col-sm-10">
 																		<form:input type="text" class="form-control"
-																			id="owner" placeholder="Owner" path="owner" />
+																			id="owner" placeholder="Owner" required="Please Enter Owner" path="owner" />
 																	</div>
 																</div>
 																<div class="form-group">
@@ -187,157 +187,6 @@
 							</div>
 						</div>
 						<div id="menu2" class="tab-pane fade">
-<%-- 							<h3>Chat Forum </h3>
-							
-<%@page import="com.latzchaat.model.UserDetails" %>
-
-<c:url var="addAction" value="/Forum/add"></c:url>
-  <aside class="callout">
-      <div class="text-vertical-center"></div>
-    </aside>
-
-
-<%UserDetails user=(UserDetails)request.getAttribute("user"); %>
-
-<div class="row">
-          <div class="col-md-12">
-            <h1>Add a New Forum Post</h1>
-          </div>
-        </div>
-
-<div class="well">
-	
-			   
-
-              <form:form role="form" commandName="forum" action="${addAction}">
-               <form:errors path="category" cssClass="error"/><br/>
-               <form:errors path="title" cssClass="error"/><br/>
-               <form:errors path="content" cssClass="error"/><br/>
-			   
-			   <div class="form-group">
-                  <label class="control-label">Category</label>
-                  <form:input class="form-control" placeholder="Enter Category" type="text" path="category"/>
-                </div>
-			   
-                <div class="form-group">
-                  <label class="control-label">Title</label>
-                  <form:input class="form-control" placeholder="Enter Title" type="text" path="title"/>
-                </div>
-               
-                <div class="form-group">
-                  <label class="control-label">Content
-                  </label>
-                  <form:textarea class="form-control" placeholder="Enter Content" rows="10" path="content"></form:textarea>
-                </div>
-               
-                <button type="submit" class="btn btn-default">Post in Forum</button>
-              </form:form>
-            </div>
-            
-            
-<div  ng-app="repeatSample" class="section">
-	<div class="container">
-	
-
-
-
-
-		<!-- Angular script to generate the productlist and sorting -->
-		<!-- ============================================================================================== -->
-
-		<script>
-			var f = ${forums};
-
-			angular.module('repeatSample', []).controller('repeatController',
-					function($scope) {
-						$scope.forums = f;
-
-						$scope.sort = function(keyname) {
-							$scope.sortKey = keyname; //set the sortKey to the param passed
-							$scope.reverse = !$scope.reverse; //if true make it false and vice versa
-						}
-
-					});
-		</script>
-
-		<!-- Textbox used to implement search option using Angular -->
-		<!-- ============================================================================================== -->
-
-		<div class="bs-component" ng-controller="repeatController">
-
-			<form class="form-inline">
-				<div class="form-group">
-					<label>Search</label> <input type="text" ng-model="search"
-						class="form-control" placeholder="Search">
-				</div>
-			</form>
-
-
-			<!-- table to show data coming from the JSON file -->
-			<!-- ============================================================================================== -->
-
-
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-
-						<!-- Performing sort functionality using angular both in ascending and descending manner -->
-						<!-- ============================================================================================== -->
-						<th ng-click="sort('category')">Category <span
-							class="glyphicon sort-icon" ng-show="sortKey=='name'"
-							ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-						</th>
-						
-						<th ng-click="sort('title')">Title <span
-							class="glyphicon sort-icon" ng-show="sortKey=='name'"
-							ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-						</th>
-						<th ng-click="sort('content')">Content <span
-							class="glyphicon sort-icon" ng-show="sortKey=='price'"
-							ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-						</th>
-						<th ng-click="sort('user')">User <span
-							class="glyphicon sort-icon" ng-show="sortKey=='category'"
-							ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-						</th>
-						<th ng-click="sort('date')">Date <span
-							class="glyphicon sort-icon" ng-show="sortKey=='category'"
-							ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-						</th>
-						<th>More Info</th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<!-- dynamically generating the table data -->
-					<!-- ============================================================================================== -->
-
-					<tr
-						ng-repeat="forum in forums|orderBy:sortKey:reverse|filter:search">
-						<td>{{forum.category}}</td>
-						<td>{{forum.title}}</td>
-						<td>{{forum.content}}</td>
-						<td>{{forum.date}}</td>
-						<td>{{forum.user}}</td>
-
-
-						<!-- Info button that maps to the ProductDetails view. Required Info for ProductDetails view is passed through request parameters -->
-						<!-- ============================================================================================== -->
-
-						<td><a
-							href="/musichub/ProductDetails?id={{product.id}}&name={{product.name}}&desc={{product.desc}}&brand={{product.brand}}&price={{product.price}}"><i
-								class="fa fa-3x fa-fw fa-exclamation-circle"></i></a></td>
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-	</div>
-</div>
-
-							
-
- --%>							
 
 							​
 						</div>
@@ -378,7 +227,7 @@
 									<label for="profile" class="control-label">Profile</label>
 								</div>
 								<div class="col-sm-10">
-									<form:input type="text" class="form-control" id="profile"
+									<form:input type="text" class="form-control" required="Please Enter Job Profile" id="profile"
 										path="profile" placeholder="Profile" />
 								</div>
 							</div>
@@ -388,7 +237,7 @@
 								</div>
 								<div class="col-sm-10">
 									<form:textarea rows="5" cols="100" class="form-control"
-										id="description" placeholder="Description" path="description" />
+										id="description" placeholder="Description" required="Please Enter Job Description" path="description" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -396,7 +245,7 @@
 									<label for="company" class="control-label">Company</label>
 								</div>
 								<div class="col-sm-10">
-									<form:input type="text" class="form-control" id="company"
+									<form:input type="text" class="form-control" required="Please Enter Company Name" id="company"
 										path="company" placeholder="Company Name" />
 								</div>
 							</div>
@@ -405,7 +254,7 @@
 									<label for="salary" class="control-label">Salary</label>
 								</div>
 								<div class="col-sm-10">
-									<form:input type="text" class="form-control" id="salary"
+									<form:input type="text" class="form-control" required="Please Enter Salary" id="salary"
 										placeholder="Salary" path="salary" />
 								</div>
 							</div>
@@ -415,7 +264,7 @@
 										Address</label>
 								</div>
 								<div class="col-sm-10">
-									<form:input type="text" class="form-control" id="address"
+									<form:input type="text" class="form-control" id="address" required="Please Enter Interview Address"
 										placeholder="Interview Address" path="address" />
 								</div>
 							</div>
@@ -424,7 +273,7 @@
 									<label for="date" class="control-label">Interview Date</label>
 								</div>
 								<div class="col-sm-10">
-									<form:input type="text" class="form-control" id="date"
+									<form:input type="text" class="form-control" id="date" required="Please Enter Interview Date"
 										placeholder="Interview Date" path="date" />
 								</div>
 							</div>
@@ -433,7 +282,7 @@
 									<label for="eligibility" class="control-label">Eligibility</label>
 								</div>
 								<div class="col-sm-10">
-									<form:input type="text" class="form-control" id="eligibility"
+									<form:input type="text" class="form-control" id="eligibility" required="Please Enter Eligibility"
 										placeholder="Eligibility" path="eligibility" />
 								</div>
 							</div>

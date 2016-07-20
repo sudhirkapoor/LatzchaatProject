@@ -1,22 +1,30 @@
 <%@include file="Header.jsp"%>
 
 <body>
+<p>
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;</p>
 <div class="container-fluid">
 	<div class="row">
+	<p>
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;</p>
 
 		<div class="col-md-3 col-sx-3">
-		&nbsp;
-		&nbsp;
-		&nbsp;
-		&nbsp;
-		&nbsp;
+		
 		<form:form commandName="userDetail"> <%-- action="edit/${userDetail.id}"  --%>
 		<div>
 			<img src="resources/images/${userDetail.id}.jpg" class="img-circle" height="300" width="300"/>
 			</div>
 			<div>
 			<center>
-			<h5>${userDetail.displayname}</h5>
+			
 			</center>
 			</div>
 			 
@@ -105,7 +113,7 @@
 	</div>
 	
 	
-	
+	<p>&nbsp;</p>
 	
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -282,40 +290,40 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <form:input class="form-control" path="fname" /> 
+              <form:input class="form-control" path="fname" required="Please Enter First Name" /> 
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <form:input class="form-control" path="lname" />
+              <form:input class="form-control" path="lname" required="Please Enter Last Name"/>
             </div>
           </div>
          
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <form:input class="form-control" path="email" />
+              <form:input class="form-control" type="email" readonly="true"  path="email" required="Please Enter email"/>
             </div>
           </div>
          
           <div class="form-group">
             <label class="col-md-3 control-label">Mobile:</label>
             <div class="col-md-8">
-              <form:input class="form-control" path="mobile" />
+              <form:input class="form-control" path="mobile" required="Please Enter Mobile Number"/>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Zipcode:</label>
             <div class="col-md-8">
-              <form:input class="form-control" path="zipcode" />
+              <form:input class="form-control" path="zipcode" required="Please Enter Zipcode"/>
             </div>
           </div>
           
           <div class="form-group">
             <label class="col-md-3 control-label">City:</label>
             <div class="col-md-8">
-              <form:input class="form-control" path="city" />
+              <form:input class="form-control" path="city" required="Please Enter City"/>
             </div>
           </div>
           
@@ -323,7 +331,7 @@
            <div class="form-group">
             <label class="col-md-3 control-label">GENDER:</label>
             <div class="col-md-8">
-              <form:input class="form-control" path="gender" />
+              <form:input class="form-control" path="gender" required="Please Enter Gender"/>
             </div>
           </div>
          
@@ -363,6 +371,8 @@
 			</script>
 
 		</div>
+		<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+		<%@include file="Footer.jsp"%>
 	</div>
 	
 

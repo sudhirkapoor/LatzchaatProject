@@ -1,4 +1,5 @@
 
+
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> 
 <footer id="footerWrapper" class="footer2">
 	<section id="mainFooter">
@@ -31,12 +32,12 @@
 					<div class="footerWidget">
 					
            <!--  <ul class="social">
-             <li> <a href="https://www.facebook.com"> <i class=" fa fa-facebook">   </i> </a> </li>
-              <li> <a href="https://www.twitter.com"> <i class="fa fa-twitter">   </i> </a> </li> 
-              <li> <a href="https://www.google.com"> <i class="fa fa-google-plus">   </i> </a> </li> 
+             <li> <a href="https://www.facebook.com"> <i class=" fa fa-facebook">   </i> </a> </li>
+              <li> <a href="https://www.twitter.com"> <i class="fa fa-twitter">   </i> </a> </li> 
+              <li> <a href="https://www.google.com"> <i class="fa fa-google-plus">   </i> </a> </li> 
             
-              <li> <a href="https://www.youtube.com"> <i class="fa fa-youtube">   </i> </a> </li> </ul> 
-					-->
+              <li> <a href="https://www.youtube.com"> <i class="fa fa-youtube">   </i> </a> </li> </ul> 
+					 -->
 					<div class="navbar-text pull-right"></div>
 					
 					<a href="https://www.facebook.com"><i class="fa fa-facebook-square"></i></a>
@@ -60,7 +61,7 @@
 				
 				
            
-				<ul class="socialNetwork">
+				 <ul class="socialNetwork">
 						<li><a href="#" class="tips" title="follow me on Facebook"><i class="icon-facebook-1 iconRounded"></i></a></li>
 						<li><a href="#" class="tips" title="follow me on Twitter"><i class="icon-twitter-bird iconRounded"></i></a></li>
 						<li><a href="#" class="tips" title="follow me on Google+"><i class="icon-gplus-1 iconRounded"></i></a></li>
@@ -76,3 +77,8 @@
 	</section>  -->
 </footer>
 
+
+
+
+
+  

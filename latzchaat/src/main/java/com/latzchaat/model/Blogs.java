@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "Blogs")
 @Entity
 public class Blogs implements Serializable {
@@ -16,14 +18,19 @@ public class Blogs implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int blogid;
 	@Column(name = "title")
+	@NotEmpty(message = "Please fill title")
 	private String title;
 	@Column(name = "description")
+	@NotEmpty(message = "Please fill description")
 	private String description;
 	@Column(name = "detail")
+	@NotEmpty(message = "Please fill detail")
 	private String detail;
 	@Column(name = "owner")
+	@NotEmpty(message = "Please fill owner")
 	private String owner;
 	@Column(name = "status")
+	@NotEmpty(message = "Please fill status")
 	private String status;
 
 	public int getBlogid() {

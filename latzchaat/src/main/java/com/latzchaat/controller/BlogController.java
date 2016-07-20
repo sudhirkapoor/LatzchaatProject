@@ -41,7 +41,7 @@ public class BlogController {
 
 	@Autowired
 	public BlogController(BlogsService blogsService) {
-		super();
+
 		this.blogsService = blogsService;
 	}
 
@@ -82,11 +82,10 @@ public class BlogController {
 		return mv;
 	}
 	
-	
-
 	@RequestMapping(value = "/InsertBlog", method = RequestMethod.POST)
 	public String insertBlog(@Valid @ModelAttribute("blog") Blogs blog, BindingResult result, Model m,
 			HttpServletRequest request) {
+		
 		if(blog.getOwner()!="" || blog.getStatus()!="")
 		{
 		blog.setOwner("Student");
@@ -95,6 +94,7 @@ public class BlogController {
 		blogsService.insertBlog(blog);
 		return "redirect:/UserHome";
 	}
+
 
 	@RequestMapping("/SingleBlog")
 

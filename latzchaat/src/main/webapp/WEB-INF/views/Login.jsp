@@ -86,6 +86,12 @@
             <h1 class="text-center login-title ">Sign in to Latzchaat.com</h1>
                 <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                     alt="">
+                      <c:if test="${not empty msg}">
+                <div class="msg"><center>${msg}</center></div>
+            </c:if>
+             <c:if test="${not empty error}">
+                <div class="error" style="color: #ff0000;"><center>${error}</center></div>
+            </c:if> 
                 <form class="form-signin" action="login" method='POST'>
                 <input type="text" class="form-control" name="email" placeholder="Email" required autofocus>
                 <input type="password" class="form-control" name="password" placeholder="Password" required>
@@ -103,4 +109,13 @@
             </div>
         </div>
     </div>
+    <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>    <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<%@include file="Footer.jsp"%>
 </div>
+

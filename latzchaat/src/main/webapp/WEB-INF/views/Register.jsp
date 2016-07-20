@@ -1,5 +1,8 @@
 <%@include file="Header.jsp"%>
 <div class="container" style="margin-top: 30px">
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -98,4 +101,16 @@
 			</div>
 		</div>
 	</div>
+	    
+</div>
+<div class="container"></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<%@include file="Footer.jsp"%>
 </div>

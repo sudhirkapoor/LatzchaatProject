@@ -35,60 +35,17 @@
 }
     </style>
   </head>
+  
+ <%--  <%@include file="Header.jsp"%> --%>
   <body ng-app="chatApp">
-  	<%-- <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
-		role="banner">
-		<div class="container">
-			<div class="navbar-header">
-				<button class="navbar-toggle" type="button" data-toggle="collapse"
-					data-target=".bs-navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a href="${session.getContextPath()}/latzchaat/index" class="navbar-brand">Letzchaat</a>
-			</div>
-			
-			<nav class="collapse navbar-collapse bs-navbar-collapse"
-				role="navigation">
-
-
-
-				<ul class="nav navbar-nav">
-				<c:if test="${pageContext.request.userPrincipal.name!=null}">
-					<li class="active"><a
-						href="${session.getContextPath()}/latzchaat/UserHome">Home</a></li>
-						</c:if>
-					<li><a href="${session.getContextPath()}/latzchaat/Contact">Contact</a></li>
-					<li><a href="${session.getContextPath()}/latzchaat/About">About US</a></li>
-				</ul>
-<c:url value="/perform_logout" var="logout" />
-			<form action="${logout}" method="post" id="logout">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csfr.token}" />
-
-			</form>
-				<ul class="nav navbar-nav navbar-right">
-					<c:if test="${pageContext.request.userPrincipal.name!=null}">
-						<li class="scroll" style="color: white"><a href="#">${pageContext.request.userPrincipal.name}</a></li>
-						<li class="scroll"><a href="javascript:formSubmit()">LOGOUT</a></li>
-						<security:authentication var="user"	property="principal.authorities" />
-						<security:authorize var="LoggedIn" access="isAuthenticated()">
-							<security:authorize access="hasRole('ROLE_ADMIN')">
-               ADMIN
-                </security:authorize>
-							<security:authorize access="hasRole('ROLE_USER')">
-                USER
-                </security:authorize>
-						</security:authorize>
-					</c:if>
-				</ul>
-			</nav>
-		</div>
-	</header>
- --%>  
+  
     <div ng-controller="ChatCtrl" class="container">
+    <div class="row">
+
+<div class="col-md-12 com-xs-12">
+    
       <form ng-submit="addMessage()" name="messageForm">
+      <a 	href="http://localhost:8080/latzchaat/UserHome">Home</a>
         <input type="text" placeholder="Compose a new message..." ng-model="message" />
         <div class="info">
           <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
@@ -102,6 +59,8 @@
         <span ng-class="{self: message.self}">{{message.message}}</span>
       </p>
     </div>
+    </div>
+    </div>
     <link rel="stylesheet"
 	href="resources/css/bootstrap.min.css">
     <script src="resources/libs/sockjs/sockjs.min.js" type="text/javascript"></script>
@@ -113,4 +72,5 @@
     <script src="resources/js/controllers.js" type="text/javascript"></script>
     <script src="resources/js/services.js" type="text/javascript"></script>
   </body>
+
 </html>

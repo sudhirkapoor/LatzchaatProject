@@ -15,7 +15,7 @@ http://www.springframework.org/schema/websocket/spring-websocket.xsd
 
 	<!-- Scaning and loading all packages which reside under com.autobazaar -->
 	<context:component-scan base-package="com.latzchaat" />
-
+	<!-- Mapping resources -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<!-- Creating bean multipart resolver for images -->
 	<bean id="multipartResolver"
@@ -35,6 +35,7 @@ http://www.springframework.org/schema/websocket/spring-websocket.xsd
 		</property>
 	</bean>
 
+	<!-- Creating web socket for chating -->
 	<websocket:message-broker
 		application-destination-prefix="/app">
 		<websocket:stomp-endpoint path="/chat">

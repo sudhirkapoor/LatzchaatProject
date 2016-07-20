@@ -1,8 +1,12 @@
 <%@include file="Header.jsp"%>
-<h1>${blog.blogid}</h1>
-
 
 <div class="container">
+<p>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</p>
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
 			<form:form modelAttribute="blog" class="">
@@ -30,8 +34,8 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-md-8">
-						<aside class="col-xs-6 col-md-8">
+					<div class="col-xs-10 col-md-10">
+						<aside class="col-xs-10 col-md-10">
 							<!-- <p>fslkflknlkasnflksanflknasfnsafnsafnsafnsanfsalknfsadnflksdanfsdanfadslnfklsadnfasdnfasdnflskadnfl
 								sdanfklsadnfslkflknlkasnflksanflknasfnsafnsafnsafnsanfsalknfsadnflksdanfsdanfadslnfklsadnfasdnfasdnflskadnflsdanfklsadnfslkflknlkasnfl
 								ksanflknasfnsafnsafnsafnsanfsalknfsadnflksdanfsdanfadslnfklsadnfasdnfasdnflskadnflsdanfklsadnfslkflknlkasnflksanflknasfnsafnsafnsafnsa
