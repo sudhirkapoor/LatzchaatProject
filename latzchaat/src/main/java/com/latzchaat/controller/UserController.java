@@ -3,6 +3,7 @@ package com.latzchaat.controller;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,16 @@ public class UserController {
 		 * m.addAttribute("listProduct", this.userService.getAllProduct());
 		 * return "Register"; }
 		 */
+		
+		List<UserDetails> userList = userService.getAllUsers();
+
+		for (int i = 0; i < userList.size(); i++) {
+			if (userDetails.getEmail().equals(userList.get(i).getEmail())) {
+				m.addAttribute("emailMsg", "Email already exists");
+
+				return "Register";
+			}
+		}
 		if (userDetails.getId() == 0) {
 			this.userService.registerUser(userDetails);
 			System.out.println(userDetails.getImage());

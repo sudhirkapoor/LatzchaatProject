@@ -1,5 +1,7 @@
 package com.latzchaat.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.*;
@@ -42,6 +44,10 @@ public class UserService {
 		System.out.println("bbye from service");
 	}
 	
+	public List<UserDetails> getAllUsers()
+	{
+		return userDAO.getAllUsers();
+	}
 	
 	public void updateUserDetails(UserDetails userDetail) {
 		userDAO.updateUserDetails(userDetail);		

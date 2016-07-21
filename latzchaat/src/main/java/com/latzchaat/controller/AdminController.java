@@ -81,6 +81,8 @@ public class AdminController {
 		System.out.println("Controller start");
 		model.addAttribute("blog", blogsService.getOneBlog(blogid));
 		model.addAttribute("blogs", blogsService.getAllBlogs());
+		model.addAttribute("job", new Jobs());
+		model.addAttribute("jobs", blogsService.getAllJobs());
 		System.out.println("Controller end");
 		return "AdminHome";
 	}

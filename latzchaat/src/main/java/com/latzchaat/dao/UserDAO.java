@@ -1,5 +1,7 @@
 package com.latzchaat.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.latzchaat.model.UserDetails;
+
 
 
 @Repository
@@ -69,6 +72,13 @@ public class UserDAO implements UserDAOInterface {
 		   session.saveOrUpdate(u);
 		//session.update(userDetail);
 	}
+	
+	public List<UserDetails> getAllUsers()
+	{
+		Session session=sessionFactory.getCurrentSession();		
+		return session.createQuery("from UserDetails").list();
+	}
+	
 	public UserDetails getUser() {
 		Session se=sessionFactory.getCurrentSession();
 		

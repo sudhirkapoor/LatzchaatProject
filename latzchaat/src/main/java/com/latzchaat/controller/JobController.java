@@ -59,22 +59,24 @@ public class JobController {
 			System.out.println("update");
 			this.jobService.updateJob(job);
 		}
-		return "redirect:/sample";
+		return "redirect:/AdminHome";
 	}
 
 	@RequestMapping("/DeleteJob/{jobid}")
 	public String deleteJob(@PathVariable("jobid") int jobid) {
 		this.jobService.deleteJob(jobid);
-		return "redirect:/sample";
+		return "redirect:/AdminHome";
 	}
 	
 	@RequestMapping("/UpdateJob/{jobid}")
 	public String updateProduct(@PathVariable("jobid") int jobid, Model model) {
 		System.out.println("Controller start");
 		model.addAttribute("job", jobService.getOneJob(jobid));
-		model.addAttribute("jobss", jobService.getAllJobs());
+		model.addAttribute("jobs", jobService.getAllJobs());
+		model.addAttribute("blog", new Blogs());
+		model.addAttribute("blogs", jobService.getAllBlogs());
 		System.out.println("Controller end");
-		return "sample";
+		return "AdminHome";
 	}
 
 }

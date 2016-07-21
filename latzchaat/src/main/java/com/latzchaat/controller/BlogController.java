@@ -51,20 +51,22 @@ public class BlogController {
 	
 		List<Blogs> newlist=new ArrayList<Blogs>();
 		
-		for (Blogs blogs : list) {
-			//System.out.println(blogs.getStatus());
-			String str=blogs.getStatus();
-			System.out.println(str);
+		for (Blogs b : list) {
+			String str=b.getStatus();
+			
 			if(str!="Inactive")
 			{
-				System.out.println(blogs.getStatus());
-				newlist.add(blogs);
+				System.out.println(b.getStatus());
+				newlist.add(b);
 			}
 		}
 		
+		for (Blogs bl : newlist) {
+			System.out.println(bl.getStatus()+"  1");
+		}
 		
 		
-		String data = new Gson().toJson(list);
+		String data = new Gson().toJson(newlist);
 		ModelAndView mv = new ModelAndView("UserHome");
 		
 		mv.addObject("userDetail",userService.getUserByName(p.getName()));

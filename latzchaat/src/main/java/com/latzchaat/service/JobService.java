@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.latzchaat.dao.JobDAO;
+import com.latzchaat.model.Blogs;
 import com.latzchaat.model.Jobs;
 @Service
 @Transactional
@@ -48,5 +49,9 @@ jobDAO.insertJob(job);
 	public void updateJob(Jobs job) {
 		// TODO Auto-generated method stub
 		jobDAO.updateJob(job);
+	}
+	public List<Blogs> getAllBlogs()
+	{
+		return jobDAO.getAllBlogs();
 	}
 }

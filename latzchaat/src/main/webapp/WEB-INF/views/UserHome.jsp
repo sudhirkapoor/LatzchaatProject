@@ -219,10 +219,10 @@
 								<input type="hidden" value="{{p.owner}}" name="owner"/>
 								<input type="hidden" value="{{p.description}}" name="description"/>
 								<input type="hidden" value="{{p.detail}}" name="detail"/>
-									<h1><button type="submit" class="btn btn-link">{{p.title}}</button></h1>
-									<p>{{p.title}}</p>
-								<p>{{p.blogid}}</p>
-								<p>{{p.owner}}</p>
+									<button type="submit" class="btn btn-link"><h3>{{p.title}}</h3></button>
+									<p><h5></h5> {{p.title}}</h5></p>
+								
+								<p><h5> {{p.owner}}</h5></p>
 									 
 								</form>
 							</td>
@@ -342,7 +342,7 @@
            
            
           <input type="submit" class="btn btn-default" value="Update">
-              <input type="reset" class="btn btn-default" value="Cancel">
+            
             </div>
           </div>
       <!--   </form> -->

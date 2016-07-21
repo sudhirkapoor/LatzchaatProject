@@ -78,7 +78,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h1 class="text-inverse">Latzchaat</h1>
-					<p class="text-inverse">Alluminai for NIIT Students</p>
+					<p class="text-inverse">Alumni for NIIT Students</p>
 					<br> <br> <a class="btn btn-lg btn-primary"
 						href="${session.getContextPath()}/latzchaat/Login">Login</a> <a
 						class="btn btn-lg btn-primary"

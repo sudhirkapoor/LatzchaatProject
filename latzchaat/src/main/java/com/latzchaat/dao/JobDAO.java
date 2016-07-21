@@ -52,5 +52,10 @@ public class JobDAO implements JobDAOInterface {
 		Session session = sessionFactory.getCurrentSession();
 		session.update(job);
 	}
-
+	public List<Blogs> getAllBlogs() {
+		Session session = sessionFactory.getCurrentSession();
+		Query q = session.createQuery("from Blogs");
+		List<Blogs> blogs = q.list();
+		return blogs;
+	}
 }
